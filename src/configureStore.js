@@ -10,9 +10,9 @@ const configureStore = () => {
         rootReducer, persistedState, applyMiddleware(thunk)
     );
 
-    store.subscribe(throttle(() => {
+/*     store.subscribe(throttle(() => {
         saveState(store.getState());
-    }, 1000));
+    }, 1000)); */
     return store;
 };
 

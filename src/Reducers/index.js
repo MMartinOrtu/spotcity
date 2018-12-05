@@ -8,8 +8,10 @@ const getCitiesReducer = (state= null, action) =>{
             return state
     }
 }
- const scoreReducer = (state= { km:1500, score: 0}, action) =>{
+ const scoreReducer = (state= { km:1500, spottedCities: 0}, action) =>{
     switch (action.type) {
+        case 'UPDATE_SCORE':
+            return action.payload;
         default:
             return state
     }

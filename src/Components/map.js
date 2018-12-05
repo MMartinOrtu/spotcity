@@ -9,9 +9,11 @@ class MapView extends Component {
   componentWillMount  () {
     this.props.getCities();
     this.props.getCityToFind();
+    console.log('will mount')
   }
 
   componentDidMount () {
+    console.log('did mount')
     var map = L.map('map', {
       center: [45.505, 10.5],
       zoom: 4.8,
@@ -24,8 +26,8 @@ class MapView extends Component {
 
 
   map.on('mouseup', this.props.onMapClick);
-  
   }
+
   render() {
     return <div id="map" className="map"></div>
     ;
