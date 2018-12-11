@@ -37,7 +37,7 @@ http://spotacity.surge.sh/
 <p align=center><img src="./src/Images/Foto-readme.png"></p>
 
 ## How to store the hight score
-One posible way to store the high score would be using LocalStorage. We could also use a database to persist data like high score.
+One possible way to store the high score would be using LocalStorage. We could also use a database to persist data like that.
 
 ## Ideas to improve the game
 Here are some ideas to improve the game:
