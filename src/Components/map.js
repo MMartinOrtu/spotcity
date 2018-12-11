@@ -14,7 +14,7 @@ class MapView extends Component {
   }
 
   componentDidMount () {
-    var map = L.map('map', {
+    let map = L.map('map', {
       center:  [45.505, 5.5],
       zoom: 4,
       maxZoom:5,
@@ -28,22 +28,36 @@ class MapView extends Component {
       attribution: '©OpenStreetMap, ©CartoDB'
     }).addTo(map);
 
-    var pinIcon = L.icon({
+    let pinIcon = L.icon({
       iconUrl: require('../Images/pin.png'),
       iconSize: [36, 36],
     });
-    var marker = L.marker([46, 4],{icon: pinIcon, draggable: true})
+    let cityIcon = L.icon({
+      iconUrl: require('../Images/pin2.png'),
+      iconSize: [36, 36],
+    });
+    let marker = L.marker([46, 4],{icon: pinIcon, draggable: true})
       .addTo(map)
-    marker.on('dragend', this.props.calculateDistance);
+
+    let cityMarker = L.marker([45.5, 1.5], {icon: cityIcon})
 
     var popup = L.popup();
-    const popupMessage = (e) =>{
+
+    const showResult = (e) =>{
+      let newLatLng = new L.LatLng(this.props.cityToFind.lat, this.props.cityToFind.long)
+      cityMarker.setLatLng(newLatLng).addTo(map)
+      this.props.calculateDistance(e)
       popup
       .setLatLng(e.target._latlng)
       .setContent(this.props.score.message)
       .openOn(map);
     }
-    marker.on('dragend', popupMessage);
+    const hideCityMarker = () => {
+      cityMarker.removeFrom(map);
+    }
+
+    marker.on('dragend', showResult);
+    marker.on('dragstart', hideCityMarker);
   }
 
   render() {
@@ -54,7 +68,8 @@ class MapView extends Component {
 
 const Map = connect( state => ({
   cities: state.cities,
-  score: state.score
+  score: state.score,
+  cityToFind: state.cityToFind
 }), dispatch => ({
   getCities: () => dispatch(getCitiesFromJSON()),
   getCityToFind: () => dispatch(getCityToFind()),

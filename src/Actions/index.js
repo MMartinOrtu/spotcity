@@ -20,6 +20,7 @@ const updateCities = (cityToFind) => {
 }
 
 export const getCityToFind = (cityToFind) => {
+
     const citiesCopy = [...store.getState().cities];
     let citiesToFind = citiesCopy.filter(city => city.spotted === false)
     let lastCityIndex = citiesToFind.indexOf(cityToFind) || 0;

@@ -31,3 +31,7 @@ html, body, #map {
 .leaflet-popup-tip-container {
   margin-left: -25px !important;
 }
+
+.leaflet-marker-pane :nth-child(2){
+  z-index: 0 !important;
+}
