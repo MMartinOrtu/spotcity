@@ -5,9 +5,8 @@ import '../Styles/panel.css';
 const PanelView = ({score, city}) =>
     <React.Fragment>
         <header className="header">
-            <p>Where is... </p>
-            <p>{score.score} cities</p>
-            <p>{score.km} kms left</p>
+            <p className="score"><span className="km">{score.km}</span> kms left &nbsp; &nbsp;<span className="cities">{score.spottedCities}</span> cities</p>
+            <p className="city-to-find">Where is <span className="city">{city.capitalCity}</span> ?</p>
         </header>
     </React.Fragment>
 

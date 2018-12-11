@@ -1,7 +1,33 @@
-.map {
-  width: 98vw;
+
+body {
+  padding: 0;
+  margin: 0;
+}
+html, body, #map {
   height: 100vh;
-  border: 1px solid red;
+  width: 100vw;
 }
 
+.leaflet-popup-content-wrapper,
+.leaflet-popup-tip {
+    color: rgb(44, 43, 42);
+    text-align: center;
+    font-weight: bold;
+}
 
+.leaflet-marker-icon {
+  margin-left: -30px !important;
+  margin-top: -65px !important;
+  height: 65px !important;
+  width: 60px !important;
+}
+
+.leaflet-popup {
+  bottom: 25px !important;
+  left: -145px !important;
+  z-index: 20000 !important;
+}
+
+.leaflet-popup-tip-container {
+  margin-left: -25px !important;
+}

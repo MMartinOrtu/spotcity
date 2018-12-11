@@ -1,5 +1,3 @@
-
-
 export const loadState = () =>{
     try {
         const serialisedState = localStorage.getItem('spotcity-state');
@@ -17,6 +15,14 @@ export const saveState = (state) => {
         const serializedState = JSON.stringify(state);
         localStorage.setItem('spotcity-state', serializedState)
     } catch (error) {
+        console.log(error)
+    }
+}
 
+export const clearStorage = () => {
+    try {
+        localStorage.removeItem('spotcity-state')
+    } catch (error) {
+        console.log(error)
     }
 }

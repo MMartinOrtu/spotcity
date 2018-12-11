@@ -4,28 +4,46 @@ import '../Styles/map.css';
 import L from 'leaflet';
 import {getCitiesFromJSON, getCityToFind, calculateDistance} from '../Actions/index';
 
+const bounds = new L.LatLngBounds(new L.LatLng(70, -16), new L.LatLng(30, 25));
+
 class MapView extends Component {
 
   componentWillMount  () {
     this.props.getCities();
     this.props.getCityToFind();
-    console.log('will mount')
   }
 
   componentDidMount () {
-    console.log('did mount')
     var map = L.map('map', {
-      center: [45.505, 10.5],
-      zoom: 4.8,
-     dragging: false
-   });
+      center:  [45.505, 5.5],
+      zoom: 4,
+      maxZoom:5,
+      minZoom: 4,
+      maxBounds: bounds,
+      bounceAtZoomLimits: false,
+      zoomControl:false
+    })
+
     L.tileLayer('http://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}.png', {
       attribution: '©OpenStreetMap, ©CartoDB'
     }).addTo(map);
-    L.marker([41.66, -4.71],{draggable: true}).addTo(map);
 
+    var pinIcon = L.icon({
+      iconUrl: require('../Images/pin.png'),
+      iconSize: [36, 36],
+    });
+    var marker = L.marker([46, 4],{icon: pinIcon, draggable: true})
+      .addTo(map)
+    marker.on('dragend', this.props.calculateDistance);
 
-  map.on('mouseup', this.props.onMapClick);
+    var popup = L.popup();
+    const popupMessage = (e) =>{
+      popup
+      .setLatLng(e.target._latlng)
+      .setContent(this.props.score.message)
+      .openOn(map);
+    }
+    marker.on('dragend', popupMessage);
   }
 
   render() {
@@ -34,13 +52,13 @@ class MapView extends Component {
   }
 }
 
-
 const Map = connect( state => ({
-  cities: state.cities
+  cities: state.cities,
+  score: state.score
 }), dispatch => ({
   getCities: () => dispatch(getCitiesFromJSON()),
   getCityToFind: () => dispatch(getCityToFind()),
-  onMapClick: (e) => dispatch(calculateDistance(e))
-}))(MapView)
+  calculateDistance: (e) => dispatch(calculateDistance(e))
+}))(MapView);
 
 export default Map;
