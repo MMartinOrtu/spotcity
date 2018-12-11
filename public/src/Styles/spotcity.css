@@ -1,0 +1,44 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+  }
+  
+.game-over {
+    background-image: linear-gradient(90deg, #1D406D, #3F67A9);
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background-attachment: fixed;
+    text-align: center;
+    padding: 8rem 0;
+    color: rgb(250, 248, 248);
+}
+
+.game-completed {
+    background-image: linear-gradient(90deg, rgba(29, 64, 109, 0.938), rgba(63, 104, 169, 0.918));
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right:0;
+    left: 0;
+    background-attachment: fixed;
+    text-align: center;
+    padding: 6rem ;
+    color: rgb(250, 248, 248);
+    z-index: 10001;
+}
+
+.start-button{
+    padding: 10px;
+    margin: 5px 20px;
+    font-size: 1rem;
+    background-color: rgba(235, 113, 14, 0.534);
+    width: 150px;
+    font-weight: bold;
+    border: 0px solid;
+    border-radius:5px;
+    color: white;
+}

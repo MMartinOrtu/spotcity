@@ -1,0 +1,32 @@
+.header {
+    position: absolute;
+    z-index: 10000;
+    width: 100vw;
+    text-align: center;
+    margin: 0 auto;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.city-to-find {
+    color: rgb(6, 40, 71);
+    font-size: 1.5rem;
+    font-weight: bold;
+    background-color: rgba(240, 255, 255, 0.493);
+    padding: 10px;
+    margin: 0;
+}
+.score {
+    color: rgb(6, 40, 71);
+    padding: 10px;
+    margin: 0;
+}
+.km {
+    color: red;
+}
+.cities {
+    color:green;
+}
+.city {
+    color: green;
+}
